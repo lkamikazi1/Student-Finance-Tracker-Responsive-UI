@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <title>Test</title>
+        </head>
+        <body>
+                <h1>Regex Test</h1>
+                <ul id="results"></ul>
+
+                <script type= "module">
+                        import{ legitdescript, legitamount, legitdate, legitcategry, redundant} from 'Scripts/validators.js';
+
+                        const list = document.getElementById('results');
+                        function test(name,passed){
+                          const icon = passed ? ' O ' : ' X ';
+                          list.innerHTML += '<li>' + icon + '' + name +'</li>';
+                    }
+                        test('description accepts "Lunch"', legitdescript('Lunch')=== true);
+                        test('description rejects leading space', legitdescript(' Lunch')===false);
+                        test('amount accepts 12.50', legitamount('12.50')===true);
+                        test('amount rejects 178',legitamount('178')===false);
+                        test('amount rejects 2.051', legitamount('2.051')===false);
+                        test('date rejects 2029-14-03', legitdate('2029-14-03')===false);
+                        test('date accepts 2025-20-01', legitdate('2025-20-01')===true);
+                        test('category rejects "foodx"',legitcategry('foodx')===false);
+                        test('category accepts "food-x"', legitcategry('food-x')===true);
+                        test('find redundant word', redundant(' at cafe cafe')===true);
+                        test('find redundant word', redundant('at cafe')===false);
+                </script>
+        </body>
+</html>
+
