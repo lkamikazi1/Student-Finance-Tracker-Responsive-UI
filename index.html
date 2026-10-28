@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="eng">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Student Finance Tracker</title>
+                <link rel="StyleSheet" href="StyleSheet.css">
+        </head>
+        <body>
+                <a class="jump" href="#main">Skip to content</a>
+                <header class="header">
+                        <h1>SFTracker</h1>
+                        <nav aria-label="main">
+                                <ul>
+                                        <li><a href="#about">About</a></li>
+                                                        <li><a href="#dashbaord">Dashboard</a></li>
+                                                        <li><a href="#records">Records</a></li>
+                                                        <li><a href="#forms">Forms</a></li>
+                                                        <li><a href="#settings">Settings</a></li>
+                                </ul>
+                        </nav>
+                </header>
+                <main id="main">
+                        <section id= "about">
+                                <h2> About</h2>
+                                <p> Student Finance Tracker helps you keep up with your finances. Keeps check/records on your daily activities with your money-currency of your choice</p>
+                                <dl>
+                                        <dt>Email</dt>
+                                        <dd>l.kamikazi1@alustudent.com</dd>
+                                        <dt>GitHub</dt>
+                                        <dd>lkamikazi1</dd>
+                                </dl>
+                        </section>
+                                                <section id= "dashaord">
+                                <h2>Dashboard</h2>
+                                <div class="containers">
+                    <span class="title">Top Category</span>
+                    <span class="TC">Food</span>
+                </div>
+                <div class="containers">
+                    <span class="title">Total Expenditure</span>
+                    <span class="TE">$31.6</span>
+                </div>
+                <div class="containers">
+                    <span class="title">Total Records</span>
+                    <span class="TR">3</span>
+                </div>
+                <h3>Last 7-day Trend</h3>
+                <div class="barchart" role="img" aria-label="Last Week's Spending Rate">
+                    <span style="height: 60%;"></span>
+                    <span style="height: 15%;"></span>
+                    <span style="height: 45%;"></span>
+                    <span style="height: 80%;"></span>
+                    <span style="height: 30%;"></span>
+                    <span style="height: 25%;"></span>
+                    <span style="height: 55%;"></span>
+                </div>
+                <p id="Target Note" role="status" aria-live="polite">$30 left in your target scope.</p>
+            </section>
+            <section id="records">
+                <h2>Records</h2>
+                <div class="search">
+                    <label>
+                        Search
+                        <input type="text" placeholder="e.g:coffe/tea">
+                    </label>
+                    <label for="sorting-opt">Sort by:</label>
+                                        <select id="sorting-opt">
+                        <option value="amount">Amount</option>
+                        <option value="date">Date</option>
+                        <option value="title">Title</option>
+                    </select>
+                </div>
+                <output id="Error"></output>
+                <div class="table-sort">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Activity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-09-29</td>
+                                <td>Food</td>
+                                <td>Lunch at Cafeteria</td>
+                                <td>12.50</td>
+                                <td>
+                                    <div class="Activity">
+                                        <button class="btn">Update</button>
+                                        <button class="btn">Remove</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                                                <td>2025-10-01</td>
+                                <td>Entertainment</td>
+                                <td>Cinema</td>
+                                <td>11.10</td>
+                                <td>
+                                    <div class="Activity">
+                                        <button class="btn">Update</button>
+                                        <button class="btn">Remove</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-10-03</td>
+                                <td>Transport</td>
+                                <td>Bus</td>
+                                <td>8.00</td>
+                                <td>
+                                    <div class="Activity">
+                                        <button class="btn">Update</button>
+                                        <button class="btn">Remove</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="forms">
+                <h2>Forms</h2>
+                <form id="record-add">
+                    <div class="category">
+                        <label for="category">Category</label>
+                                                <input name="category" id="category" list="tag">
+                        <datalist id="tag">
+                            <option>Food</option>
+                            <option>Transport</option>
+                            <option>Entertainment</option>
+                            <option>Books</option>
+                            <option>Fees</option>
+                            <option>Other</option>
+                        </datalist>
+                        <output id="Error"></output>
+                    </div>
+                    <div class="description">
+                        <label>
+                            Title
+                            <input type="text" name="Title" required>
+                        </label>
+                        <output id="Error"></output>
+                    </div>
+                    <div>
+                        <label>
+                            Amount
+                            <input type="number" name="Amount" step="0.01" required>
+                        </label>
+                        <output id="Error"></output>
+                    </div>
+                    <div>
+                        <label>
+                            Date
+                            <input type="date" name="Date" placeholder="YYYY-MM-DD" required>
+                        </label>
+                        <output id="Error"></output>
+                    </div>
+                    <button type="submit">Save</button>
+                </form>
+                            </section>
+            <section id="settings">
+                <h2>settings</h2>
+                <label>
+                    Target
+                    <input type="number" name="Target" value="100">
+                </label>
+                <label for="moneycurrency">Currency</label>
+                <select name="Currency" id="moneycurrency">
+                    <option>EUR</option>
+                    <option>USD</option>
+                    <option>RWF</option>
+                </select>
+                <label>
+                    Rate
+                    <input type="number" name="1USD>RWF" value="1483" step="0.01">
+                </label>
+                <label>
+                    Rate
+                    <input type="number" name="1USD>EUR" value="0.89" step="0.01">
+                </label>
+                <section class="button">
+                    <label>
+                        Import
+                        <input type="file" name="Import JSON" accept="application/json">
+                    </label>
+                    <button id="exp">Export JSON</button>
+                </section>
+            </section>
+        </main>
+        <footer class="footer"><p>@Student Finance Tracker</p></footer>
+          <script type="module" src="Scripts/main.js"></script>
+    </body>
+</html>

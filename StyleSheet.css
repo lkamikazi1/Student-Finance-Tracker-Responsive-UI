@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+}
+ 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+  line-height: 1.5;
+}
+ 
+[hidden] {
+  display: none !important;
+}
+ 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+ 
+.skip {
+  position: absolute;
+  left: -999px;
+}
+ 
+.skip:focus {
+  left: 10px;
+  top: 10px;
+  background-color: lightblue;
+  color: white;
+  padding: 8px;
+}
+ 
+:focus-visible {
+  outline: 3px solid lightblue;
+  outline-offset: 2px;
+}
+ 
+.site-header {
+  background-color: white;
+  padding: 12px 16px;
+  border-bottom: 1px solid white;
+}
+ 
+.site-header h1 {
+  font-size: 1.2rem;
+  margin: 0 0 8px 0;
+}
+ 
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ 
+nav a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #222;
+}
+ 
+nav a:hover {
+  background-color: white;
+}
+ 
+nav a[aria-current="page"] {
+  background-color: lightblue;
+  color: white;
+}
+ 
+main {
+  padding: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+ 
+main > section {
+  background-color: white;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  animation: fadeIn 0.4s ease;
+}
+ 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+ 
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+ 
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+ 
+button {
+  background-color: lightblue;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 12px;
+}
+ 
+button:hover {
+  background-color: lightblue;
+}
+ 
+.error {
+  color: red;
+  margin: 4px 0 0 0;
+  min-height: 1.2em;
+  font-size: 0.9rem;
+}
+ 
+#search-error {
+  color: red;
+}
+ 
+.table-wrap {
+  overflow-x: auto;
+}
+ 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+}
+ 
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid white;
+}
+ 
+td button {
+  margin-top: 0;
+  padding: 4px 8px;
+}
+ 
+mark {
+  background-color: yellow;
+  color: black;
+}
+ 
+.card {
+  background-color: white;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+ 
+.card .label {
+  display: block;
+  font-weight: normal;
+  margin: 0;
+  color: #555;
+}
+ 
+.card strong {
+  font-size: 1.5rem;
+}
+ 
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 100px;
+}
+ 
+.chart span {
+  flex: 1;
+  background-color: #4338ca;
+}
+ 
+#cap-message {
+  color: green;
+  font-weight: bold;
+}
+ 
+#cap-message.over {
+  color: #b00020;
+}
+ 
+.site-footer {
+  text-align: center;
+  padding: 16px;
+  color: #555;
+}
+ @media (min-width: 768px) {
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+ 
+  .site-header h1 {
+    margin: 0;
+  }
+ 
+  .cards {
+    display: flex;
+    gap: 12px;
+  }
+ 
+  .card {
+    flex: 1;
+  }
+}
+ @media (min-width: 1024px) {
+  main {
+    padding: 24px;
+  }
+ 
+  main > section {
+    padding: 24px;
+  }
+}

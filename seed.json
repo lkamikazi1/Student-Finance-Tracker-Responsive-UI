@@ -1,0 +1,42 @@
+{
+        "Records":[
+                {
+                        "id": "rec001",
+                        "description": "Lunch at Cafeteria",
+                        "amount": 12.5,
+                        "category": "Food",
+                        "date": "2025-09-29",
+                        "create": "2025-09-29T10:00:00Z",
+                        "update": "2025-09-29T10:00:00Z"
+                },
+                {
+                        "id": "rec002",
+                        "description": "Cinema",
+                        "amount": 11.1,
+                        "category": "Entertainment",
+                        "date": "2025-10-01",
+                        "create": "2025-10-01T10:00:00Z",
+                        "update": "2025-10-01T10:00:00Z"
+                },
+                {
+                        "id": "rec003",
+                        "description": "Bus",
+                        "amount": 8,
+                        "category": "Transport",
+                        "date": "2025-10-03",
+                        "create": "2025-10-03T10:00:00Z",
+                        "update": "2025-10-03T10:00:00Z"
+                }
+        ],
+
+        "settings": {
+                "target": 100,
+                "moneycurrency": "USD",
+                 "rate":{
+                        "USD": 1,
+                        "RWF": 1661,
+                        "EUR": 0.89
+                }
+        }
+}
+    
