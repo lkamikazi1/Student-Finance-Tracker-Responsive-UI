@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: white;
+  background-color: beige;
   color: black;
   line-height: 1.5;
 }
@@ -43,7 +43,7 @@ body {
 .site-header {
   background-color: white;
   padding: 12px 16px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid whitesmoke;
 }
  
 .site-header h1 {
@@ -69,15 +69,15 @@ nav a {
 }
  
 nav a:hover {
-  background-color: white;
+  background-color: #e0e0f5;
 }
  
 nav a[aria-current="page"] {
-  background-color: lightblue;
+  background-color: blueviolet;
   color: white;
 }
  
-main {
+ main {
   padding: 16px;
   max-width: 1000px;
   margin: 0 auto;
@@ -96,7 +96,7 @@ main > section {
   to { opacity: 1; }
 }
  
-label {
+ label {
   display: block;
   margin-top: 12px;
   font-weight: bold;
@@ -112,7 +112,7 @@ select {
 }
  
 button {
-  background-color: lightblue;
+  background-color: blueviolet;
   color: white;
   border: none;
   padding: 8px 14px;
@@ -123,7 +123,7 @@ button {
 }
  
 button:hover {
-  background-color: lightblue;
+  background-color: blueviolet;
 }
  
 .error {
@@ -137,7 +137,7 @@ button:hover {
   color: red;
 }
  
-.table-wrap {
+ .table-wrap {
   overflow-x: auto;
 }
  
@@ -151,7 +151,7 @@ th,
 td {
   padding: 8px;
   text-align: left;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid whitesmoke;
 }
  
 td button {
@@ -164,8 +164,8 @@ mark {
   color: black;
 }
  
-.card {
-  background-color: white;
+ .card {
+  background-color: whitesmoke;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 8px;
@@ -191,7 +191,7 @@ mark {
  
 .chart span {
   flex: 1;
-  background-color: #4338ca;
+  background-color: blueviolet;
 }
  
 #cap-message {
@@ -200,14 +200,15 @@ mark {
 }
  
 #cap-message.over {
-  color: #b00020;
+  color: red;
 }
  
-.site-footer {
+ .site-footer {
   text-align: center;
   padding: 16px;
-  color: #555;
+  color: grey;
 }
+ 
  @media (min-width: 768px) {
   .site-header {
     display: flex;
@@ -228,6 +229,7 @@ mark {
     flex: 1;
   }
 }
+ 
  @media (min-width: 1024px) {
   main {
     padding: 24px;

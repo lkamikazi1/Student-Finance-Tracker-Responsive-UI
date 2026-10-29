@@ -1,80 +1,89 @@
-let Records=[];
-let Settings={
-        Target: 100,
-        moneycurency: 'USD',
-        Rate: {USD: 1, RWF: 1661, EUR: 0.89}
+let records = [];
+ 
+let settings = {
+  cap: 100,
+  base: 'USD',
+  rates: { USD: 1, RWF: 1400, EUR: 0.92 }
 };
-export function validaterecs(){
-        return Records;
+ 
+export function getRecords() {
+  return records;
 }
-export function xrec(newrec){
-        Records = newrec;
+ 
+export function setRecords(newRecords) {
+  records = newRecords;
 }
-export function validatesetting(){
-        return Settings;
+ 
+export function getSettings() {
+  return settings;
 }
-export function xsetting(newset){
-        if (newset.Target!== undefined) Settings.Target=newset.Target;
-        if (newset.moneycurrency!== undefined) Settings.moneycurrency=newset.moneycurrency;
-        if (newset.Rate!==undefined){
-                Settings.Rate.EUR=newset.Rate.EUR||Settings.Rate.EUR;
-                Settings.Rate.RWF=newset.Rate.RWF||Settings.Rate.RWF;
-        }
+ 
+export function setSettings(newSettings) {
+  if (newSettings.cap !== undefined) settings.cap = newSettings.cap;
+  if (newSettings.base !== undefined) settings.base = newSettings.base;
+  if (newSettings.rates !== undefined) {
+    settings.rates.RWF = newSettings.rates.RWF || settings.rates.RWF;
+    settings.rates.EUR = newSettings.rates.EUR || settings.rates.EUR;
+  }
 }
-export function newrec(list){
-        const now = new Date().toISOString();
-        const Record = {
-                id: 'recs'+Date.now(),
-                Description: list.Description.trim().replace(/\s{2,}/g, ''),
-                Amount: Number(list.Amount),
-                Category: list.Category.trim(),
-                Date: list.Date,
-                create: now,
-                update: now
-        };
-
-        Records.push(Record);
+ 
+export function addRecord(data) {
+  const now = new Date().toISOString();
+ 
+  const record = {
+    id: 'rec_' + Date.now(),
+    description: data.description.trim().replace(/\s{2,}/g, ' '),
+    amount: Number(data.amount),
+    category: data.category.trim(),
+    date: data.date,
+    createdAt: now,
+    updatedAt: now
+  };
+ 
+  records.push(record);
 }
-export function deleterec(ID){
-        const saved=[];
-        for (let i=0; i<Records.length; i++){
-                if (Records[i].id !== ID){
-                        saved.push(Records[i]);
-                }
-        }
-        Records=saved;
+ 
+export function deleteRecord(id) {
+  const kept = [];
+  for (let i = 0; i < records.length; i++) {
+    if (records[i].id !== id) {
+      kept.push(records[i]);
+    }
+  }
+  records = kept;
 }
-export function updatedrec(ID,Area){
-        for(let i=0; i< Records.length; i++){
-                if(Records[i].id ===ID){
-                        Records[i].Description=Area.Description.trim().replace(/\s{2,}/g,'');
-                        Records[i].Amount=Number(Area.Amount);
-                        Records[i].Category=Area.Category.trim();
-                        Records[i].Date=Area.Date;
-                        Records[i].update=new Date().toISOString();
-                }
-        }
+ 
+export function updateRecord(id, fields) {
+  for (let i = 0; i < records.length; i++) {
+    if (records[i].id === id) {
+      records[i].description = fields.description.trim().replace(/\s{2,}/g, ' ');
+      records[i].amount = Number(fields.amount);
+      records[i].category = fields.category.trim();
+      records[i].date = fields.date;
+      records[i].updatedAt = new Date().toISOString();
+    }
+  }
 }
-export function arrangerecs( x,data,order){
-        const copy = x.slice();
-
-        copy.sort(function (a,b){
-                let result = 0 ;
-                if (data ==='Amount'){
-                        result = a.Amount - b.Amount;
-                }
-                else if (data === 'Description'){
-                        result = c.Description.localCompare(b.Description);
-                }
-                                else {
-                        result= a.Date.localCompare(b.Date);
-                }
-                if (order === 'desc'){
-                        result = -result;
-                }
-                return result;
-        }
-        );
-        return copy;
+ 
+export function sortRecords(list, key, direction) {
+  const copy = list.slice();
+ 
+  copy.sort(function (a, b) {
+    let result = 0;
+ 
+    if (key === 'amount') {
+      result = a.amount - b.amount;
+    } else if (key === 'description') {
+      result = a.description.localeCompare(b.description);
+    } else {
+      result = a.date.localeCompare(b.date);
+    }
+ 
+    if (direction === 'desc') {
+      result = -result;
+    }
+    return result;
+  });
+ 
+  return copy;
 }
-                                 

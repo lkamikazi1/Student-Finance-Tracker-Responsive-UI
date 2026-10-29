@@ -1,80 +1,63 @@
-let Records=[];
-let Settings={
-        Target: 100,
-        moneycurency: 'USD',
-        Rate: {USD: 1, RWF: 1661, EUR: 0.89}
-};
-export function validaterecs(){
-        return Records;
+export function makeRegex(pattern, ignoreCase) {
+  if (pattern === '') {
+    return { regex: null, error: '' };
+  }
+ 
+  let flags = '';
+  if (ignoreCase) {
+    flags = 'i';
+  }
+ 
+  try {
+    return { regex: new RegExp(pattern, flags), error: '' };
+  } catch (error) {
+    return { regex: null, error: 'Invalid pattern: ' + error.message };
+  }
 }
-export function xrec(newrec){
-        Records = newrec;
+ 
+export function escapeHTML(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
-export function validatesetting(){
-        return Settings;
+ 
+export function highlight(text, regex) {
+  text = String(text);
+ 
+  if (regex === null) {
+    return escapeHTML(text);
+  }
+ 
+  const globalRegex = new RegExp(regex.source, regex.flags + 'g');
+  let result = '';
+  let lastEnd = 0;
+  let match = globalRegex.exec(text);
+ 
+  while (match !== null) {
+    if (match[0] === '') {
+      globalRegex.lastIndex++;   
+    } else {
+      result += escapeHTML(text.slice(lastEnd, match.index));
+      result += '<mark>' + escapeHTML(match[0]) + '</mark>';
+      lastEnd = match.index + match[0].length;
+    }
+    match = globalRegex.exec(text);
+  }
+ 
+  result += escapeHTML(text.slice(lastEnd));
+  return result;
 }
-export function xsetting(newset){
-        if (newset.Target!== undefined) Settings.Target=newset.Target;
-        if (newset.moneycurrency!== undefined) Settings.moneycurrency=newset.moneycurrency;
-        if (newset.Rate!==undefined){
-                Settings.Rate.EUR=newset.Rate.EUR||Settings.Rate.EUR;
-                Settings.Rate.RWF=newset.Rate.RWF||Settings.Rate.RWF;
-        }
+ 
+export function recordMatches(record, regex) {
+  if (regex === null) {
+    return true;
+  }
+  return (
+    regex.test(record.description) ||
+    regex.test(record.category) ||
+    regex.test(String(record.amount)) ||
+    regex.test(record.date)
+  );
 }
-export function newrec(list){
-        const now = new Date().toISOString();
-        const Record = {
-                id: 'recs'+Date.now(),
-                Description: list.Description.trim().replace(/\s{2,}/g, ''),
-                Amount: Number(list.Amount),
-                Category: list.Category.trim(),
-                Date: list.Date,
-                create: now,
-                update: now
-        };
-
-        Records.push(Record);
-}
-export function deleterec(ID){
-        const saved=[];
-        for (let i=0; i<Records.length; i++){
-                if (Records[i].id !== ID){
-                        saved.push(Records[i]);
-                }
-        }
-        Records=saved;
-}
-export function updatedrec(ID,Area){
-        for(let i=0; i< Records.length; i++){
-                if(Records[i].id ===ID){
-                        Records[i].Description=Area.Description.trim().replace(/\s{2,}/g,'');
-                        Records[i].Amount=Number(Area.Amount);
-                        Records[i].Category=Area.Category.trim();
-                        Records[i].Date=Area.Date;
-                        Records[i].update=new Date().toISOString();
-                }
-        }
-}
-export function arrangerecs( x,data,order){
-        const copy = x.slice();
-
-        copy.sort(function (a,b){
-                let result = 0 ;
-                if (data ==='Amount'){
-                        result = a.Amount - b.Amount;
-                }
-                else if (data === 'Description'){
-                        result = c.Description.localCompare(b.Description);
-                }
-                                else {
-                        result= a.Date.localCompare(b.Date);
-                }
-                if (order === 'desc'){
-                        result = -result;
-                }
-                return result;
-        }
-        );
-        return copy;
-}
-                                 
