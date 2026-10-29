@@ -2,7 +2,7 @@
 
 A responsive web app to track student spending. It is built with plain HTML, CSS and JavaScript.
 
-Live site:
+Live site: https://jdcb5nvk-5500.inc1.devtunnels.ms/#about 
 Demo video:
 
 Features
